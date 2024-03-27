@@ -1,0 +1,60 @@
+create DATABASE inventario_frutta;
+
+use inventario_frutta;
+
+create table frutto (
+id int PRIMARY KEY AUTO_INCREMENT,
+nome varchar(20) not null UNIQUE,
+descr varchar(40) not null,
+quantita int DEFAULT 0 CHECK (quantita>=0)
+);
+
+insert into frutto (nome, descr, quantita) VALUES 
+("mango","mango descr",0),
+("banana","banana descr",10),
+("mela","mela descr",3),
+("pera","pera descr",7);
+
+CREATE table potere(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    descr varchar(20) NOT null unique
+);
+
+INSERT INTO potere (descr) VALUES ("visualizza"),("modifica");
+
+CREATE TABLE user(
+    id int PRIMARY key AUTO_INCREMENT,
+    username varchar(50) not null UNIQUE,
+    password varchar(50) not null
+);
+
+INSERT into USER (username, password) values ("cliente","cliente"),("admin","admin");
+
+create table potere_user(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    id_user int not null,
+    id_potere int not null,
+    FOREIGN KEY (id_user) REFERENCES user (id),
+    FOREIGN KEY (id_potere) REFERENCES potere (id)
+    );
+
+INSERT into potere_user (id_user,id_potere) VALUES (1,1),(2,1),(2,2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
